@@ -1,14 +1,13 @@
 <p>character works!</p>
 
-<app-character-list></app-character-list>
+<app-character-list [characters]="characters"></app-character-list>
 
 <br>
-<button (click)="dispatchAction()">Dispatch Action</button>
-<br>
-<button (click)="getData()">Get data</button>
+<!-- <button (click)="dispatchAction()">Dispatch Action</button> -->
 
-<div class="card-body" *ngIf="characters$ | async as characters">
+
+<!-- <div class="card-body" *ngIf="characters$ | async as characters">
     <div class="list-group">
 
     </div>
- </div>
+ </div> -->

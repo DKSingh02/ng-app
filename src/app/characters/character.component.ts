@@ -22,6 +22,8 @@ export class CharacterComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
+    this.store.dispatch(new CharacterActions.getAllCharacters());
     // this.characterService
     //   .getCharacters()
     //   .subscribe((data) => (this.characters = data.results));
@@ -33,17 +35,21 @@ export class CharacterComponent implements OnInit {
     //   .pipe(select('characters'))
     //   .subscribe((allCharacters) => console.log('Characters ' + JSON.stringify(allCharacters)));
 
-    this.characters$ = this.store.pipe(
-      select(fromCharacters.getAllCharacters)
-    ) as Observable<Result[]>;
-    this.characters$.subscribe((characters) =>
-      console.log('Characters data: -' + JSON.stringify(characters))
-    );
+    // this.characters$ = this.store.pipe(
+    //   select(fromCharacters.getAllCharacters)
+    // ) as Observable<Result[]>;
+    // this.characters$.subscribe((characters) =>
+    //   console.log('Characters data: -' + JSON.stringify(characters))
+    // );
+
+    this.store
+      .pipe(select(fromCharacters.getAllCharacters))
+      .subscribe((characters) => {
+        this.characters = characters;
+      });
   }
 
-  dispatchAction() {
-    this.store.dispatch(new CharacterActions.getAllCharacters());
-  }
-
-  getData() {}
+  // dispatchAction() {
+  //   this.store.dispatch(new CharacterActions.getAllCharacters());
+  // }
 }
