@@ -6,3 +6,9 @@
 <button (click)="dispatchAction()">Dispatch Action</button>
 <br>
 <button (click)="getData()">Get data</button>
+
+<div class="card-body" *ngIf="characters$ | async as characters">
+    <div class="list-group">
+
+    </div>
+ </div>
